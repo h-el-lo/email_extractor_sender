@@ -14,7 +14,7 @@ server = 'localhost'
 port = 1025
 
 # CHANGE THE SENDER VARIABLE. ENSURE TO LEAVE THE SENDER EMAIL IN WITHIN THE QUOTES. E.g 'sender@email.com'.
-sender = 'thisliny@gmail.com'
+sender = 'myemail@gmail.com'
 
 def create_message(reciever, time):
 
