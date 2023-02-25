@@ -24,14 +24,27 @@ On this note, we'll like to appreciate you for your trust in us, and all the sup
 
 
 message = EmailMessage()
-message['From'] = sender
 
+print('\n')
+print('='*50)
+print('='*50)
+print('Ensure to add both a first name and a last name with a space in-between!')
+print('Failure to do this will result in only the email address mane displaying as the sender.')
+print('Type the sender name in the desired alphabet case you wish to show.\nE.g, type "First User" or "FIRST USER".')
+print('These will output two different texts as the sender name.')
+print('='*50)
+print('='*50)
+print('\n')
+
+# For the sender name to show, ensure to add a first name and a last name.\
+# Failure to do this will result in only the email address mane displaying as the sender
+sender_name = input('Sender Name: ').strip()
 
 
 def create_message(receiver):
     global sender, body
     message = EmailMessage()
-    message['From'] = sender
+    message['From'] = sender_name
     message['Subject'] = 'Test mail'
     message['To'] = receiver
     message.set_content(body)
