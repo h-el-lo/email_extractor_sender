@@ -22,8 +22,6 @@ On this note, we'll like to appreciate you for your trust in us, and all the sup
 
 
 message = EmailMessage()
-message['From'] = 'Cold Stalker'
-
 
 print('\n')
 print('='*50)
