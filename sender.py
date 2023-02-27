@@ -4,7 +4,6 @@
 # The sender gmail account has to be configured accordingly: having 'two-step-verification' enabled. Steps for proper configuration are explained in the link below.
 #           https://towardsdatascience.com/how-to-easily-automate-emails-with-python-8b476045c151.
 # Add the email file to the directory of this file. Also ensure to add the file extension.
-# Ensure to change the 'sender' variable to the desired sender email address.
 # The actual message of the email can be edited in the 'body' variable.
 
 from email_extractor import read_file
@@ -34,7 +33,7 @@ print('='*50)
 print('='*50)
 print('\n')
 
-# For the sender name to show, ensure to add a first name and a last name.\
+# For the sender name to show, ensure to add a first name and a last name.
 # Failure to do this will result in only the email address mane displaying as the sender
 sender_name = input('Sender Name: ').strip()
 
@@ -65,8 +64,6 @@ while file_not_found:
 
 del file_not_found
 # Deletes the file_not_found variable
-
-addresses = ['dieufidel88@gmail.com', 'nancyazuali@gmail.com']
 
 context = ssl.create_default_context()
 with smtplib.SMTP_SSL(server, port, context=context) as mail:
