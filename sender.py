@@ -13,12 +13,10 @@ from email.message import EmailMessage
 
 server = 'smtp.gmail.com'
 port = 465
-
-# CHANGE THE SENDER VARIABLE. ENSURE TO LEAVE THE SENDER EMAIL IN WITHIN THE QUOTES. E.g 'sender@email.com'.
-# Also, changes can be made to the body variable. However, ensure to leave the message within the triple quotes. E.g 
-#    '''This is the changed message. The changes have been applied. However, the message is still within the triple quotes.'''
 user = str(input('Sender Email: ')).strip()        
 password = input('\nEnter your email password and press enter: ').strip()
+
+
 body = '''After about twelve hours of work and research, debugging and the help of God, it is safe to say that this application is complete.
 On this note, we'll like to appreciate you for your trust in us, and all the support you've given.'''
 
