@@ -17,13 +17,15 @@ port = 465
 # CHANGE THE SENDER VARIABLE. ENSURE TO LEAVE THE SENDER EMAIL IN WITHIN THE QUOTES. E.g 'sender@email.com'.
 # Also, changes can be made to the body variable. However, ensure to leave the message within the triple quotes. E.g 
 #    '''This is the changed message. The changes have been applied. However, the message is still within the triple quotes.'''
-sender = 'myemail@gmail.com'
+user = str(input('Sender Email: ')).strip()        
 password = input('\nEnter your email password and press enter: ').strip()
 body = '''After about twelve hours of work and research, debugging and the help of God, it is safe to say that this application is complete.
 On this note, we'll like to appreciate you for your trust in us, and all the support you've given.'''
 
 
 message = EmailMessage()
+message['From'] = 'Cold Stalker'
+
 
 print('\n')
 print('='*50)
@@ -42,7 +44,7 @@ sender_name = input('Sender Name: ').strip()
 
 
 def create_message(receiver):
-    global sender, body
+    global sender_name, body
     message = EmailMessage()
     message['From'] = sender_name
     message['Subject'] = 'Test mail'
@@ -68,13 +70,15 @@ while file_not_found:
 del file_not_found
 # Deletes the file_not_found variable
 
+addresses = ['dieufidel88@gmail.com', 'nancyazuali@gmail.com']
+
 context = ssl.create_default_context()
 with smtplib.SMTP_SSL(server, port, context=context) as mail:
 
-    mail.login(sender, password)
+    mail.login(user, password)
 
     for receiver in addresses:
         message = create_message(receiver)
-        mail.sendmail(sender, receiver, message.as_string())
+        mail.sendmail(user, receiver, message.as_string())
 
 # Ensure to maintain a stable internet connection throughout the process.
