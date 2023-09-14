@@ -26,6 +26,8 @@ def read_file(file):
             if email_list != None:
                 # Lines without valid email addresses return an enpty list which eventually returns None and 'NoneType' cannot be iterated.
                 for email in email_list:
-                    email_addresses.append(email)
+                    if not email in email_addresses:
+                        # Checks if email is already in list
+                        email_addresses.append(email)
     
     return email_addresses

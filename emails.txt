@@ -1,1 +1,1 @@
-﻿
+﻿addresses = ['dieufidel88@gmail.com', 'nancyazuali@gmail.com']

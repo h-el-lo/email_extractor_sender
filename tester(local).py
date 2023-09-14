@@ -1,4 +1,4 @@
-# This file was created to send multiple multiple simple text mails to different email addresses.
+# This file was created to send mails to different email addresses in bulk.
 # It would read any file and extract any correctly structured email addresses found in it using the 'file_read' method.
 # This file will output the messages on a debugging server, not an actual online server.
 # To activate the server in a terminal, run the command
@@ -9,6 +9,7 @@
 
 from email_extractor import read_file
 import smtplib, datetime
+from email.message import EmailMessage
 
 server = 'localhost'
 port = 1025
@@ -16,16 +17,18 @@ port = 1025
 # CHANGE THE SENDER VARIABLE. ENSURE TO LEAVE THE SENDER EMAIL IN WITHIN THE QUOTES. E.g 'sender@email.com'.
 sender = 'myemail@gmail.com'
 
-def create_message(reciever, time):
+def create_message(receiver, body):
 
     global sender
-    message = '''From: %s
-To: %s
-Subject: Test mail
-Message: Not so new to sending multiple emails on local smtpd servers.
-- %s''' %(sender, reciever, time)
-
+    
+    message = EmailMessage()
+    message['From'] = sender
+    message['To'] = receiver
+    message['Subject'] = 'New Mail'
+    message.set_content(body)
+    
     return message
+
 
 file_not_found = True
 while file_not_found:
@@ -39,12 +42,17 @@ while file_not_found:
     break
 
 
+
 del file_not_found
 # Deletes the file_not_found variable
 
-with smtplib.SMTP(server, port) as mail:
-    for reciever in addresses:
-        message = create_message(reciever, str(datetime.datetime.now()))
-        mail.sendmail(sender, reciever, message)
+body = '''
+Message: Not so new to sending multiple emails on local smtpd servers.
+- %s''' %(datetime.datetime.now())
 
-    
+
+with smtplib.SMTP(server, port) as mail:
+    for receiver in addresses:
+        message = create_message(receiver, body)
+        mail.sendmail(sender, receiver, message.as_string())
+        

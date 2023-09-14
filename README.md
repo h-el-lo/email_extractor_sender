@@ -1,9 +1,13 @@
-* The software extracts emails from text files (with the email_extractor file) and sends bulk email to every email pushed to it (with either the sender.py file of tester(local).py file)
-* Run the 'tester(local).py' to print messages to terminal using the command:
-*   python -m smtpd -c DebuggingServer -n localhost:1025
-* Run the 'sender.py' file to send the email through 'smtp.gmail.com'.
-* Reconfigure the sender email in the 'sender' variable.
-* Configure the body of the email in the 'body' variable
-* For a gmail address, it is necessary to enable two-step-verification since 'less-secure-apps' enable/disable is no longer available in gmail. 
-* Configure the email address as directed in the webpage below.
-*   Handling the smtp.gmail.com api. https://towardsdatascience.com/how-to-easily-automate-emails-with-python-8b476045c151.
+=========== NEW THINGNS LEARNED ===========
+* The smtpd package has been deprecated since Python 3.9. The third party aiosmtpd package is the recommended replacement. The equivalent command is "python -m aiosmtpd -n -l localhost:1025". https://stackoverflow.com/questions/55036268/sending-email-in-python-mimemultipart#55078292.\
+* The aiosmtpd server stops quicker than an smtpd server.
+
+
+
+
+=========== IMPROVEMENTS MADE ===========
+* The 'tester(local).py' file sends email with the MIMEMultipart() objects.
+* The sender name is specified as input when the program runs instead of having to edit the variable in the program.
+* The sender email is specified as input when the program runs instead of having to edit the variable in the program.
+* The sender.py file uses the email.mime module to create the email messages.
+* Attachments can be added to text or html messages using the email.mime module
